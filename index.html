@@ -2,285 +2,211 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KG Grocery | Social Media</title>
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>KG Grocery • Connect</title>
+    <!-- Font Awesome (icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
         body {
-            background-color: #fefefe;
-            color: #1e2a2f;
-            line-height: 1.6;
+            background-color: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        /* Navbar (copied from index) */
-        .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        .app-bar {
+            background-color: #2b7a4b; /* KG Grocery green */
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
-            padding: 1rem 0;
+            z-index: 10;
         }
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+        .app-bar i {
+            margin-right: 8px;
         }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2b7a4b;
-            letter-spacing: -0.5px;
+        .container {
+            flex: 1;
+            padding: 1.5rem 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
         }
-        .logo span {
-            color: #2c3e50;
-            font-weight: 400;
-            font-size: 1rem;
-            margin-left: 4px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #2c3e50;
-            transition: color 0.2s;
-            font-size: 1rem;
-        }
-        .nav-links a:hover {
-            color: #2b7a4b;
-        }
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #2c3e50;
-        }
-        /* Social page specific */
-        .social-section {
-            padding: 5rem 0;
-            min-height: 60vh;
-        }
-        .section-title {
+        .heading {
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
+        .heading h2 {
+            color: #1e2a2f;
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+        .heading p {
             color: #4a6b5a;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            font-size: 1rem;
+            margin-top: 0.3rem;
         }
         .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .social-card {
-            background: white;
-            border: 1px solid #c8e6c9;
-            border-radius: 20px;
-            padding: 2rem 1rem;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .social-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 30px rgba(43,122,75,0.15);
-        }
-        .social-card i {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-        .social-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        .social-card p {
-            color: #4a6b5a;
-            font-size: 0.9rem;
-        }
-        /* Telegram brand color (blue) */
-        .fa-telegram { color: #0088cc; }
-        .fa-facebook { color: #1877f2; }
-        .fa-twitter { color: #1da1f2; }
-        .fa-instagram { color: #e4405f; }
-        .fa-whatsapp { color: #25d366; }
-        .fa-tiktok { color: #000000; }
-        /* Footer (same as index) */
-        .footer {
-            background: #1e2a2f;
-            color: #eaecf0;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .footer .container {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-        .footer-links {
+        .social-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
             display: flex;
-            gap: 2rem;
-            justify-content: center;
-            list-style: none;
-            margin: 1rem 0;
-        }
-        .footer-links a {
-            color: #eaecf0;
+            align-items: center;
+            gap: 1.2rem;
             text-decoration: none;
+            color: #1e2a2f;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e0f0e5;
+            transition: transform 0.1s ease, box-shadow 0.2s;
+            -webkit-tap-highlight-color: transparent;
         }
-        .footer-links a:hover {
+        .social-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .social-card i {
+            font-size: 2.5rem;
+            width: 2.5rem;
+            text-align: center;
+        }
+        .social-card .info {
+            flex: 1;
+        }
+        .social-card .info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .social-card .info p {
+            color: #4a6b5a;
+            font-size: 0.9rem;
+        }
+        .social-card .arrow {
             color: #2b7a4b;
+            font-size: 1.2rem;
+            opacity: 0.7;
         }
-        .social-icons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            font-size: 1.5rem;
+        /* brand colors for icons */
+        .fa-telegram { color: #0088cc; }
+        .fa-facebook { color: #1877f2; }
+        .fa-instagram { color: #e4405f; }
+        .fa-youtube { color: #ff0000; }
+        .fa-tiktok { color: #000000; }
+        .footer {
+            text-align: center;
+            padding: 1.5rem 1rem 1rem;
+            font-size: 0.9rem;
+            color: #4a6b5a;
         }
-        .social-icons a {
-            color: #eaecf0;
-        }
-        .social-icons a:hover {
+        .footer a {
             color: #2b7a4b;
+            text-decoration: none;
+            font-weight: 500;
         }
-        hr {
-            border: 0.5px solid #4a6b5a;
-            margin: 1.5rem 0 1rem;
+        .back-home {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 2rem;
+            background-color: #2b7a4b;
+            color: white;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 4px 8px rgba(43,122,75,0.3);
         }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hamburger {
-                display: block;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
+        .back-home i {
+            margin-right: 0.5rem;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <!-- <nav class="navbar">
-        <div class="container">
-            <div class="logo">KG <span>Grocery</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#groceries">Groceries</a></li>
-                <li><a href="index.html#track">Track</a></li>
-                <li><a href="index.html#order">Order</a></li>
-                <li><a href="index.html#profile">Profile</a></li>
-                <li><a href="index.html" class="active">Social</a></li>
-            </ul>
-            <div class="hamburger">☰</div>
-        </div>
-    </nav> -->
+    <div class="app-bar">
+        <i class="fas fa-shopping-basket"></i> KG Grocery
+    </div>
 
-    <!-- Social Section -->
-    <section class="social-section">
-        <div class="container">
-            <h1 class="section-title">Connect With Us</h1>
-            <p class="section-subtitle">Follow KG Grocery on social media for updates, offers, and fresh news</p>
-            <div class="social-grid">
-                <!-- Telegram -->
-                <a href="https://t.me/KG_Delivery_Debre_Markos" target="_blank" class="social-card">
-                    <i class="fab fa-telegram"></i>
+    <div class="container">
+        <div class="heading">
+            <h2>Connect With Us</h2>
+            <p>Tap to follow, chat or subscribe</p>
+        </div>
+
+        <div class="social-grid">
+            <!-- Telegram -->
+            <a href="https://t.me/KG_Delivery_Debre_Markos" target="_blank" class="social-card">
+                <i class="fab fa-telegram"></i>
+                <div class="info">
                     <h3>Telegram</h3>
-                    <p>@kggrocery</p>
-                </a>
-                <!-- Facebook -->
-                <a href="https://facebook.com/kggrocery" target="_blank" class="social-card">
-                    <i class="fab fa-facebook"></i>
+                    <p>@KG_Delivery</p>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://facebook.com/kggrocery" target="_blank" class="social-card">
+                <i class="fab fa-facebook"></i>
+                <div class="info">
                     <h3>Facebook</h3>
                     <p>/kggrocery</p>
-                </a>
-                <!-- Instagram -->
-                <a href="https://instagram.com/kggrocery" target="_blank" class="social-card">
-                    <i class="fab fa-instagram"></i>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/kggrocery" target="_blank" class="social-card">
+                <i class="fab fa-instagram"></i>
+                <div class="info">
                     <h3>Instagram</h3>
                     <p>@kggrocery</p>
-                </a>
-                <!-- Twitter -->
-                <a href="https://twitter.com/kggrocery" target="_blank" class="social-card">
-                    <i class="fab fa-twitter"></i>
-                    <h3>Twitter</h3>
-                    <p>@kggrocery</p>
-                </a>
-                <!-- WhatsApp -->
-                <a href="https://wa.me/251967859515" target="_blank" class="social-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>WhatsApp</h3>
-                    <p>+251 967 859 515</p>
-                </a>
-                <!-- TikTok -->
-                <a href="https://tiktok.com/@kal_and_medi_flower_shop" target="_blank" class="social-card">
-                    <i class="fab fa-tiktok"></i>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://tiktok.com/@kal_and_medi_flower_shop" target="_blank" class="social-card">
+                <i class="fab fa-tiktok"></i>
+                <div class="info">
                     <h3>TikTok</h3>
+                    <p>@kal_and_medi</p>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- YouTube (new) -->
+            <a href="https://youtube.com/@kggrocery" target="_blank" class="social-card">
+                <i class="fab fa-youtube"></i>
+                <div class="info">
+                    <h3>YouTube</h3>
                     <p>@kggrocery</p>
-                </a>
-            </div>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div style="font-size: 1.8rem; font-weight: 700;">KG <span style="color:#2b7a4b;">Grocery</span></div>
-            <ul class="footer-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#groceries">Groceries</a></li>
-                <li><a href="index.html#track">Track</a></li>
-                <li><a href="index.html#order">Order</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="social.html">Social</a></li>
-            </ul>
-            <div class="social-icons">
-                <a href="https://t.me/kggrocery"><i class="fab fa-telegram"></i></a>
-                <a href="https://facebook.com/kggrocery"><i class="fab fa-facebook"></i></a>
-                <a href="https://twitter.com/kggrocery"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/kggrocery"><i class="fab fa-instagram"></i></a>
-            </div>
-            <hr>
-            <p>© 2025 KG Grocery Delivery — Debre Markos, Ethiopia. All rights reserved.</p>
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="index.html" class="back-home">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
         </div>
-    </footer>
+    </div>
 
-    <script>
-        // Simple hamburger mock (same as before)
-        document.querySelector('.hamburger')?.addEventListener('click', () => {
-            alert('Mobile menu would open here');
-        });
-    </script>
+    <div class="footer">
+        <p>© 2026 KG Grocery — Debre Markos</p>
+        <p style="margin-top: 0.5rem;"><a href="mailto:grocery@kg.et">grocery@kg.et</a></p>
+    </div>
 </body>
 </html>
